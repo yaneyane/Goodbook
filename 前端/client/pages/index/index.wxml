@@ -1,0 +1,13 @@
+<view class="button-sp-area;flex-direction:cs" style='flex-direction:row-reverse;'>
+  <view class="main">
+    <view class="item item1">1</view>
+    <view class="item item2">2</view>
+    <view class="item item3">3</view>
+  </view>
+        <navigator url='../adminLogin/adminLogin'>管理员入口</navigator>
+         <button type="primary" bindtap='getInAct'>参与抽奖</button>
+        <button type="primary" bindtap='getAwardSitu'>获奖情况</button>
+</view>
+
+       
+

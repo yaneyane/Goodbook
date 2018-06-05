@@ -1,0 +1,8 @@
+<!--pages/initiateSuccess/initiateSuccess.wxml-->
+<view style='height:100%'>
+    <view class='text'>活动已生成！请填写奖品设置。</view>
+    <view class='button-sp-area'>
+        <button type='primary' style='width:100px' bindtap='fill'>填写</button>
+    </view>
+</view>
+

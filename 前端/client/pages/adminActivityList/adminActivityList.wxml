@@ -1,0 +1,9 @@
+<!--pages/lotteryList/lotteryList.wxml-->
+<view class="button-sp-area;flex-direction:cs" style='flex-direction:column;padding-top:150px'>
+    <navigator url='../adminActivityDoing/adminActivityDoing'>
+      <button class='butt' type="primary" bindtap='activityDoing'>正在进行</button>
+    </navigator>
+    <navigator url='../adminActivityDone/adminActivityDone'>
+      <button class='butt' type="primary" bindtap='activityDone'>已结束</button>
+    </navigator>
+</view>
