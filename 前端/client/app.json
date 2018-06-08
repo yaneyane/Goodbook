@@ -1,9 +1,9 @@
 {
   "pages": [
-    
+       "pages/index/index", 
     "pages/adminActivityDone/adminActivityDone",
    
-    "pages/index/index",
+
     "pages/adminLogin/adminLogin",
     "pages/adminIndex/adminIndex",
     "pages/awardDetail/awardDetail",
@@ -18,7 +18,7 @@
     "pages/createSuccess/createSuccess",
     "pages/adminActivityList/adminActivityList",
     "pages/adminActivityDoing/adminActivityDoing",
-    
+    "pages/userinfo/userinfo",
     "pages/userActivityDoing/userActivityDoing"
   ],
   "window": {
