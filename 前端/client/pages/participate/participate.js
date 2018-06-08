@@ -9,7 +9,7 @@ Page({
   },
   ret: function(){
     wx.navigateTo({
-      url: '/pages/lotteryList/lotteryList',
+      url: '/pages/userActivityDoing/userActivityDoing',
     })
   },
   /**

@@ -1,2 +1,5 @@
 <!--pages/submitSuccess/submitSuccess.wxml-->
-<text>pages/submitSuccess/submitSuccess.wxml</text>
+<view class="button-sp-area;flex-direction:cs" style='flex-direction:column;padding-top:150px'>
+    参与成功
+      <button class='butt' type="primary" bindtap='ret'>返回</button>
+</view>

@@ -1,26 +1,19 @@
-// pages/userActivityDoing/userActivityDoing.js
+// pages/user2/user2.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
-  },
-
-  paticipate: function(){
-    wx.navigateTo({
-      url: '/pages/participate/participate',
-    })
-  },
-  ret: function () {
-    wx.navigateTo({
-      url: '/pages/index/index',
-    })
-  },
+  }, 
   /**
    * 生命周期函数--监听页面加载
    */
+  submit: function(){
+    wx.navigateTo({
+      url: '/pages/submitSuccess/submitSuccess',
+    })
+  },
   onLoad: function (options) {
   
   },
@@ -71,14 +64,25 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-      return {
-
-        title: '好书送送送不停',
-
-        desc: '好书送不停 幸运大抽奖',
-
-        path: '/page/userActivityDoing/userActivityDoing'
-
+  
+  },
+  formSubmit: function (e) {
+    var that = this;
+    var formData = e.detail.value;
+    wx.request({
+      url: '',
+      data: formData,
+      header: {
+        'Content-Type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+        that.modalTap();
       }
-    }
+    })
+  },
+  formReset: function () {
+    console.log('form发生了reset事件');
+    this.modalTap2();
+  }  
 })

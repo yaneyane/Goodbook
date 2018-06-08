@@ -1,0 +1,24 @@
+<!--pages/user2/user2.wxml-->
+
+<view class='page'>
+  <form bindsubmit='userSubmit'>
+    <view>填写个人信息</view>
+    <view>
+      <view class="kind-list__item">
+        <view>姓名</view>
+        <input></input>
+      </view>
+      <view class="kind-list__item">
+        <view>电话</view>
+        <input type='number'></input>
+      </view>
+      <view class="kind-list__item">
+        <view>地址</view>
+        <input type='textarea'></input>
+      </view>
+    </view>
+    <view class="section btn-area">
+            <button class='btn_foot' form-type="submit" type='primary' bindtap='submit'>提交</button>  
+    </view>
+  </form>
+</view>
