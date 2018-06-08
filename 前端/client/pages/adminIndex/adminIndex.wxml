@@ -1,10 +1,6 @@
 
-
-    <view class="button-sp-area;flex-direction:cs" style='flex-direction:row-reverse;'>
-        管理员入口
-    </view>
-    <view class="button-sp-area;flex-direction:cs" style='flex-direction:row;padding-top:150px'>
-        <button type="primary" bindtap='getInAct'>发起抽奖</button>
-        <button type="primary" bindtap='getWinner'>导出获奖用户信息</button>
-    </view>
+<view class="button-sp-area;flex-direction:cs" style='flex-direction:row;padding-top:150px'>
+    <image class="loginBtn" src="{{getInAct_image}}" bindtap="getInAct"></image> 
+    <image class="loginBtn" src="{{getWinner_image}}" bindtap="getWinner"></image>
+</view>
     

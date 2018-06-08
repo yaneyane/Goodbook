@@ -1,8 +1,11 @@
 {
   "pages": [
+    
+    "pages/adminActivityDone/adminActivityDone",
+   
     "pages/index/index",
-    "pages/adminIndex/adminIndex",
     "pages/adminLogin/adminLogin",
+    "pages/adminIndex/adminIndex",
     "pages/awardDetail/awardDetail",
     "pages/initiateActivity/initiateActivity",
     "pages/initiateSuccess/initiateSuccess",
@@ -13,9 +16,9 @@
     "pages/awardSituation/awardSituation",
     "pages/createActivity/createActivity",
     "pages/createSuccess/createSuccess",
-    "pages/adminActivityDoing/adminActivityDoing",
-    "pages/adminActivityDone/adminActivityDone",
     "pages/adminActivityList/adminActivityList",
+    "pages/adminActivityDoing/adminActivityDoing",
+    
     "pages/userActivityDoing/userActivityDoing"
   ],
   "window": {

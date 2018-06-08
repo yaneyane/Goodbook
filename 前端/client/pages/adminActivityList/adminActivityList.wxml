@@ -1,9 +1,7 @@
 <!--pages/lotteryList/lotteryList.wxml-->
-<view class="button-sp-area;flex-direction:cs" style='flex-direction:column;padding-top:150px'>
-    <navigator url='../adminActivityDoing/adminActivityDoing'>
-      <button class='butt' type="primary" bindtap='activityDoing'>正在进行</button>
-    </navigator>
-    <navigator url='../adminActivityDone/adminActivityDone'>
-      <button class='butt' type="primary" bindtap='activityDone'>已结束</button>
-    </navigator>
+
+
+<view class="button-sp-area;flex-direction:cs" style='flex-direction:row;padding-top:150px'>
+    <image class="loginBtn" src="{{doing_image}}" bindtap="activityDoing"></image> 
+    <image class="loginBtn" src="{{done_image}}" bindtap="activityDone"></image>
 </view>
