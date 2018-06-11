@@ -1,45 +1,38 @@
-// pages/initiateActivity/initiateActivity.js
+var qcloud = require('../../vendor/wafer2-client-sdk/index')
+var config = require('../../config')
+var util = require('../../utils/util.js')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     toast1Hidden: true,
     modalHidden: true,
     modalHidden2: true,
     notice_str: '',
+    takeSession: false,
+    requestResult: '',
+    date : util.formatTime(new Date()),
+    time: util.formatTime(new Date()),
+    dates: '',
+    times: ''
+  },
+  //  点击时间组件确定事件  
+  bindTimeChange: function (e) {
+    var that = this;
+    this.setData({
+      times: e.detail.value
+    }),
+    console.log(this.data.times)
+  },
+  //  点击日期组件确定事件  
+  bindDateChange: function (e) {
+    var that = this;
+    console.log(e.detail.value)
+    this.setData({
+      dates: e.detail.value
+    }),
+    console.log(this.data.dates)
   },
   toast1Change: function (e) {
     this.setData({ toast1Hidden: true });
-  },
-  //弹出确认框  
-  modalTap: function (e) {
-    this.setData({
-      modalHidden: false
-    })
-  },
-  confirm_one: function (e) {
-    console.log(e);
-    this.setData({
-      modalHidden: true,
-      toast1Hidden: false,
-      notice_str: '提交成功'
-    });
-  },
-  cancel_one: function (e) {
-    console.log(e);
-    this.setData({
-      modalHidden: true,
-      toast1Hidden: false,
-      notice_str: '取消成功'
-    });
-  },
-  //弹出提示框  
-  modalTap2: function (e) {
-    this.setData({
-      modalHidden2: false
-    })
   },
   modalChange2: function (e) {
     this.setData({
@@ -52,81 +45,58 @@ Page({
       index: e.detail.value
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-  formSubmit: function (e) {
-    var that = this;
-    var formData = e.detail.value;
-    wx.request({
-      url: '',
-      data: formData,
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        console.log(res.data)
-        that.modalTap();
-      }
-    })
-    //这个东西回来放在上面的success里面
-    wx.navigateTo({
-      url: '../initiateSuccess/initiateSuccess',
-    })
+  activity: function (e) {
+    var that = this
+    var flag = false
+    var formData = {"ActivityName": e.detail.value.ActivityName, "Date": this.data.dates, "Time": this.data.times}
+    e.detail.value = formData;
+    if (e.detail.value.ActivityName.length == 0 || e.detail.value.Date.length == 0 || e.detail.value.Time.length == 0) {
+      wx.showToast({
+        title: '请填写完整信息!',
+        icon: 'loading',
+        duration: 1500
+      })
+      setTimeout(function () {
+        wx.hideToast()
+      }, 2000)
+    }
+    else {
+      wx.navigateTo({
+        url: '/pages/createActivity/createActivity',
+      }),
+      wx.request({
+        url: getApp().data.host_debug + '/Activity/create',
+        data: e.detail.value,
+        method: 'POST',
+        header: { 'content-type': 'application/x-www-form-urlencoded' },
+        success: function (res) {
+          console.log('submit success activity create');
+          console.log(res.data);
+          console.log('test');
+          flag = true;
+          wx.showToast({
+            title: '填写成功!',
+            icon: 'success',
+            duration: 1500
+          })
+          setTimeout(function () {
+            wx.hideToast()
+          }, 2000)
+          wx.navigateTo({
+            url: '/pages/createActivity/createActivity',
+          })
+        },
+        fail: function (res) {
+          console.log('submit fail too');
+        },
+        complete: function (res) {
+          console.log('submit complete too');
+        }
+      })
+    }
   },
   formReset: function () {
     console.log('form发生了reset事件');
     this.modalTap2();
   } ,
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  }
 })

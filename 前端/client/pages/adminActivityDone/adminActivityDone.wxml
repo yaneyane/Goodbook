@@ -1,6 +1,5 @@
 <scroll-view style="display: flex; flex-direction: row; position: fixed">
   <view class='title'>正在进行</view>
-
   <view class='content' style="height: 70px;flex-direction:row;">
     <view style="width:50px;">
       <text class='con_num' style="height: 80px;flex-direction:row;">1</text>
@@ -13,7 +12,6 @@
       <button class='button'>导出xlsx文件</button>
     </view>
   </view>
-
   <view class='content' style="height: 70px;flex-direction:row;">
     <view style="width:50px;">
       <text class='con_num' style="height: 80px;flex-direction:row;">2</text>

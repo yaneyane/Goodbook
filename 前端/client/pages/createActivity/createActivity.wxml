@@ -1,6 +1,5 @@
-<!--pages/awardcreate/awardcreate.wxml-->
-<view class="kind-list">
-  <form bindsubmit='awardForm' bindreset='awardreset'>
+<view class="page">
+  <form bindsubmit='award' bindreset='awardreset'>
     <view class="page__desc">
       填写奖品信息
     </view>
@@ -11,41 +10,44 @@
             <view class="weui-flex__item">{{item.name}}</view>
           </view>
           <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
-            <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
-              
-              <view>书名</view>
-              <input bindinput='bookname'></input>
-              <view>书籍信息</view>
-              <input bindinput='bookinfo'></input>
-              <view>qr码</view>
-              <input bindinput='qrcode'></input>
-              <view>奖品数量</view>
-              <input bindinput='quantity'></input>
-            </view>
+            <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}"> 
+              <block wx:for="{{item.awardtype}}" wx:for-item="page" wx:key="*this">
+                <view class='listitem-name'>{{page.name}}</view>
+                <view class='listitem-input'>
+                  <input bindinput='{{page.input}}' bindinput='bindPageName' data-index="{{index}}" name='{{page.awardtype.id}}' id='{{page.awardtype.id}}' placeholder='请输入{{page.name}}'></input>
+                </view>
+              </block>
+              <view>
+                <view>
+                  <view class="listitem-name" id='QR' bindtap="doUpload">
+                      <text>二维码</text>
+                  </view>
+                  <view class="uploader-container" wx:if="{{imgUrl}}">
+                      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+                  </view>
+                  </view>
+                  <view>
+                </view>
+                <view>
+                <view class="listitem-name" id='Picture' bindtap="doUpload2">
+                      <text>图片</text>
+                </view>
+                <view class="uploader-container" wx:if="{{imgUrl2}}">
+                    <image class="uploader-image" src="{{imgUrl2}}" mode="aspectFit" bindtap="previewImg"></image>
+                </view>
+                </view>
+                <view>
+              </view>
+              </view>
           </view>
         </view>
-      </block>
+      </view>
+    </block>
     </view>
-    <view class="section btn-area">
-      <button class='btn_mid'form-type='submit' bindtap='submitActivity'>提交 </button>
+    <view class="btn-area">
+      <button class='btn_mid'form-type='submit'>提交 </button>
       <button class='btn_foot' form-type='reset'>清空 </button>
     </view>
   </form>
-  <toast hidden="{{toast1Hidden}}" bindchange="toast1Change">  
-        {{notice_str}}  
-    </toast>  
-    <!-- 黑框提示并消失 -->  
-    <toast hidden="{{toast1Hidden}}" bindchange="toast1Change">  
-        {{notice_str}}  
-    </toast>  
-    <!-- 确认框 及 提示框 -->  
-    <view class="page__bd">  
-        <modal title="确认" confirm-text="确定" cancel-text="取消" hidden="{{modalHidden}}" mask bindconfirm="confirm_one" bindcancel="cancel_one">  
-            确认提交么？  
-        </modal>  
-        <modal class="modal" hidden="{{modalHidden2}}" no-cancel bindconfirm="modalChange2" bindcancel="modalChange2">  
-            <view> 提示 </view>  
-            <view> 清空成功 </view>  
-        </modal>  
-    </view>  
+   
 </view>

@@ -1,7 +1,0 @@
-<!--pages/createSuccess/createSuccess.wxml-->
-<view style='height:100%'>
-    <view class='text'>提交成功！</view>
-    <view class='button-sp-area'>
-        <button type='primary' style='width:100px' bindtap='return'>返回</button>
-    </view>
-</view>

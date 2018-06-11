@@ -1,29 +1,12 @@
 <scroll-view style="display: flex; flex-direction: row; position: fixed">
   <view class='title'>正在进行</view>
-
-  <view class='content' style="height: 70px;flex-direction:row;">
+  <view class='content' style="height: 70px;flex-direction:row;" wx:for="{{doingActivity}}" wx:for-index="index" wx:for-item="item">
     <view style="width:50px;">
-      <text class='con_num' style="height: 80px;flex-direction:row;">1</text>
+      <text class='con_num' style="height: 80px;flex-direction:row;">{{index+1}}</text>
     </view>
     <view class="part">
-      <text class='con_big'>算法导论抽奖</text>
-      <text class='con_small'>2018.4.5-2018.4.12</text>
-    </view>
-    <view style="width: 200px;flex-direction:row;">
-      <text class='con_big'>共有：200人参与</text>
+      <text class='con_big'>{{item.ActivityName}}</text>
+      <text class='con_small'>{{item.StartTime}}-{{item.EndTime}}</text>
     </view>
   </view>
-
-  <view class='content' style="height: 70px;flex-direction:row;">
-    <view style="width:50px;">
-      <text class='con_num' style="height: 80px;flex-direction:row;">2</text>
-    </view>
-    <view class="part">
-      <text class='con_big'>计算机组成原理抽奖</text>
-      <text class='con_small'>2018.4.5-2018.4.12</text>
-    </view>
-    <view style="width: 200px;flex-direction:row;">
-      <text class='con_big'>共有：210人参与</text>
-    </view>
-  </view>
-  </scroll-view>
+</scroll-view>

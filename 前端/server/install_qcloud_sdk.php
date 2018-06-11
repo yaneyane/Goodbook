@@ -7,6 +7,7 @@ require_once './config.php';
 
 use \QCloud_WeApp_SDK\Conf as Conf;
 
+
 // 系统判断
 if (PHP_OS === 'WINNT') {
     $sdkConfigPath = 'C:\qcloud\sdk.config';

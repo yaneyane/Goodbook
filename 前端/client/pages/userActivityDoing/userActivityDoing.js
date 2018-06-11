@@ -1,16 +1,32 @@
-// pages/userActivityDoing/userActivityDoing.js
+var activityArray;
+var activityJson;
+var activityJsonStr;
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  
+    userActivitydoing:''
   },
-
-  paticipate: function(){
-    wx.navigateTo({
-      url: '/pages/participate/participate',
+  paticipate: function (e) {
+    var that = this
+    var i = e.currentTarget.dataset.index
+    e.detail.value = that.data.userActivitydoing[i].ActivityID;
+    wx.request({
+      url: getApp().data.host_debug + '/Activity00/index',
+      method: 'POST',
+      data: e.detail.value,
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success: function (res) {
+        console.log(e.detail.value);
+        console.log('test activity00');
+      },
+      fail: function (res) {
+        console.log('submit fail too');
+      },
+      complete: function (res) {
+        console.log('submit complete too');
+      }
+    })
+    wx.showToast({
+      title: '参加成功！',
     })
   },
   ret: function () {
@@ -18,67 +34,33 @@ Page({
       url: '/pages/index/index',
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-  
+    var that = this
+    wx.request({
+      url: getApp().data.host_debug + '/Activity00/index',
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success: function (res) {
+        activityJson = res.data.activity;
+        activityJsonStr = JSON.stringify(activityJson);
+        that.setData({
+          userActivitydoing: activityJson
+        });
+      },
+      fail: function (res) {
+      },
+      complete: function (res) {
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage: function () {
       return {
-
         title: '好书送送送不停',
-
         desc: '好书送不停 幸运大抽奖',
-
         path: '/page/userActivityDoing/userActivityDoing'
-
-      }
-    }
+      },
+        wx.showToast({
+          title: '分享成功！',
+        })
+  }
 })

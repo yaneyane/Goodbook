@@ -1,31 +1,25 @@
 {
   "pages": [
-       "pages/index/index", 
-    "pages/adminActivityDone/adminActivityDone",
-   
-
-    "pages/adminLogin/adminLogin",
+    "pages/index/index",
+    "pages/adminActivityDoing/adminActivityDoing",
     "pages/adminIndex/adminIndex",
-    "pages/awardDetail/awardDetail",
-    "pages/initiateActivity/initiateActivity",
+    "pages/createActivity/createActivity",
+    "pages/userinfo/userinfo",
+    "pages/adminActivityDone/adminActivityDone",
+    "pages/adminLogin/adminLogin",
     "pages/initiateSuccess/initiateSuccess",
-    "pages/lotteryDetail/lotteryDetail",
-    "pages/lotteryList/lotteryList",
-    "pages/participate/participate",
     "pages/submitSuccess/submitSuccess",
     "pages/awardSituation/awardSituation",
-    "pages/createActivity/createActivity",
-    "pages/createSuccess/createSuccess",
     "pages/adminActivityList/adminActivityList",
-    "pages/adminActivityDoing/adminActivityDoing",
-    "pages/userinfo/userinfo",
-    "pages/userActivityDoing/userActivityDoing"
+    "pages/initiateActivity/initiateActivity",
+    "pages/userActivityDoing/userActivityDoing",
+    "pages/table/table"
   ],
-  "window": {
+  "window": { 
     "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "black",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "Wafer Quick Start",
+    "navigationBarTitleText": "好书送送送不停",
     "navigationBarTextStyle": "black"
   }
 }

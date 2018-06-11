@@ -1,7 +1,6 @@
 <!--pages/awardSituation/awardSituation.wxml-->
 <scroll-view style="display: flex; flex-direction: row; position: fixed">
   <view class='title'>已获奖</view>
-
   <view class='content' style="height: 70px;flex-direction:row;">
     <view style="width:50px;">
       <text class='con_num' style="height: 80px;flex-direction:row;">1</text>
@@ -11,10 +10,9 @@
       <text class='con_small'>2018.4.5-2018.4.12</text>
     </view>
     <view style="width: 200px;flex-direction:row;">
-      <button class='button'>填写个人信息</button>
+      <button class='button' bindtap='fillUserInfo'>填写个人信息</button>
     </view>
   </view>
-
   <view class='content' style="height: 70px;flex-direction:row;">
     <view style="width:50px;">
       <text class='con_num' style="height: 80px;flex-direction:row;">2</text>
@@ -24,11 +22,10 @@
       <text class='con_small'>2018.4.5-2018.4.12</text>
     </view>
     <view style="width: 200px;flex-direction:row;">
-      <button class='button'>填写个人信息</button>
+      <button class='button' bindtap='fillUserInfo'>填写个人信息</button>
     </view>
   </view>
   </scroll-view>
-
   <view class="inputView"> 
-            <button style='inputView' form-type="submit" type='primary' bindtap='ret'>返回</button>  
+            <button style='inputView' form-type="submit" bindtap='ret'>返回</button>  
   </view>

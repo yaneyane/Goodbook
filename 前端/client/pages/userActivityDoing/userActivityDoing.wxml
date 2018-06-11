@@ -1,32 +1,17 @@
 <view class='title'>正在进行</view>
-
-  <view class='content' style="height: 70px;flex-direction:row;">
-    <view style="width:50px;">
-      <text class='con_num' style="height: 80px;flex-direction:row;">1</text>
+  <view class='content' style="height: 70px;flex-direction:row;" wx:for="{{userActivitydoing}}" wx:for-index="index" wx:for-item="item">
+    <view style='width:50px;'>
+      <text class='con_num' style="height: 80px; flex-direction:row;">{{index+1}}</text>
     </view>
     <view class="part">
-        <text class='con_big'>算法导论抽奖</text>
-        <text class='con_small'>2018.4.5-2018.4.12</text>
+      <text class='con_big'>{{item.ActivityName}}</text>
+      <text class='con_big'>{{item.StartTime}}-{{item.EndTime}}</text>
     </view>
     <view style="width: 200px;flex-direction:row;">
-        <button class='button' bindtap="paticipate">参加</button>
-        <button class='button' open-type="share">分享</button>
+        <button class='button' bindtap="paticipate" data-index="{{index}}">参加</button>
+        <button class='button' open-type="share" data-index="{{index}}">分享</button>
     </view>
   </view>
-
-  <view class='content' style="height: 70px;flex-direction:row;">
-    <view style="width:50px;">
-      <text class='con_num' style="height: 80px;flex-direction:row;">2</text>
-    </view>
-      <view class="part">
-        <text class='con_big'>计算机组成原理抽奖</text>
-        <text class='con_small'>2018.4.5-2018.4.12</text>
-      </view>
-    <view style="width: 200px;flex-direction:row;">
-        <button class='button' bindtap="paticipate">参加</button>
-        <button class='button' open-type="share">分享</button>
-    </view>
-  </view>
-  <view class="section btn-area">
-            <button class='btn_foot' form-type="submit" type='primary' bindtap='ret'>返回</button>  
-    </view>
+<view class="section btn-area">
+  <button class='btn_foot' form-type="submit"bindtap='ret'>返回</button>  
+</view>

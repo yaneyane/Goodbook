@@ -66,6 +66,7 @@ page{
   width: 130px;
   font-size: 10px;
 }
+
 .part{
   display: flex;
   width: 250px;
@@ -101,6 +102,7 @@ page{
   bottom:0;
   position: fixed;
   width: 100%
+  
 }
 
 .block{

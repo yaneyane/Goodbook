@@ -21,7 +21,7 @@ $config = [
      * 开发环境下，MySQL 的初始密码为您的微信小程序 AppID
      */
     'mysql' => [
-        'host' => 'localhost',
+        'host' => '127.0.0.1',
         'port' => 3306,
         'user' => 'root',
         'db'   => 'cAuth',
@@ -37,7 +37,7 @@ $config = [
          * 北京：cn-north
          * 广州二区：cn-south-2
          * 成都：cn-southwest
-         * 新加坡：sg
+         *                                                                                                                                      新加坡：sg
          * @see https://www.qcloud.com/document/product/436/6224
          */
         'region' => 'cn-sorth',
@@ -45,6 +45,7 @@ $config = [
         'fileBucket' => 'wafer',
         // 文件夹
         'uploadFolder' => ''
+
     ],
 
     // 微信登录态有效期
