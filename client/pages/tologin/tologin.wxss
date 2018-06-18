@@ -1,0 +1,5 @@
+/* pages/tologin/tologin.wxss */
+page{width:100%;height:100%;background-size: cover;background-image:url('https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree1.png');
+} 
+.loginBtn {width: 50%;height: 10%;padding: 5px;vertical-align: middle;position: fixed;margin-top: 75%;left: 25%;background-color: #474f30;color: white;border-radius: 5px;}
+

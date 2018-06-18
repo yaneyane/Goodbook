@@ -1,0 +1,97 @@
+<scroll-view style="display: flex; flex-direction: row; position: fixed">
+    <view class="page__desc">
+      当前活动
+    </view>
+    <view class='block'>
+      <block wx:for="{{userActivitydoing}}" wx:key="id">
+        <view class="kind-list__item">
+          <view id="{{index}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+            <view class="weui-flex__item">活动名称：{{item.ActivityName}}</view>
+            <view class="weui-flex__item">结束时间：{{item.EndTime}}</view>
+            <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+              <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}"> 
+                  <view class='weui-flex kind-list__item-hd weui-flex__item'>特等奖
+                    <view class='weui-flex'>
+                      书名：{{item.awards[0].BookName}}
+                    </view>
+                    <view class='weui-flex'>
+                      书本信息：{{item.awards[0].BookInfo}}
+                    </view>
+                    <view class='weui-flex'>
+                      书本照片：
+                    </view>
+                    <view class='weui-flex'><image class="uploader-image" mode="aspectFit" src="{{item.awards[0].BookPhoto}}"></image>
+                    </view>
+                    <view class='weui-flex'>
+                      书本二维码：
+                    </view>
+                    <view class='weui-flex'><image class="uploader-image" mode="aspectFit" src="{{item.awards[0].QRCode}}"></image>
+                    </view>
+                    <view class='weui-flex'>
+                      奖品数量：{{item.awards[0].AwardQuantity}}
+                    </view>
+                  </view>
+                  <view class='weui-flex kind-list__item-hd weui-flex__item'>一等奖
+                    <view class='weui-flex'>
+                      书名：{{item.awards[1].BookName}}
+                    </view>
+                    <view class='weui-flex'>
+                      书本信息：{{item.awards[1].BookInfo}}
+                    </view>
+                    <view class='weui-flex'>
+                      书本照片：<image class="uploader-image" mode="aspectFit" src="{{item.awards[1].BookPhoto}}"></image>
+                    </view>
+                    <view class='weui-flex'>
+                      书本二维码：<image class="uploader-image" mode="aspectFit" src="{{item.awards[1].QRCode}}"></image>
+                    </view>
+                    <view class='weui-flex'>
+                      奖品数量：{{item.awards[1].AwardQuantity}}
+                    </view>
+                  </view>
+                  <view class='weui-flex kind-list__item-hd weui-flex__item'>二等奖
+                    <view class='weui-flex'>
+                      书名：{{item.awards[2].BookName}}
+                    </view>
+                    <view class='weui-flex'>
+                      书本信息：{{item.awards[2].BookInfo}}
+                    </view>
+                    <view class='weui-flex'>
+                      书本照片：<image class="uploader-image" mode="aspectFit" src="{{item.awards[2].BookPhoto}}"></image>
+                    </view>
+                    <view class='weui-flex'>
+                      书本二维码：<image class="uploader-image" mode="aspectFit" src="{{item.awards[2].QRCode}}"></image>
+                    </view>
+                    <view class='weui-flex'>
+                      奖品数量：{{item.awards[2].AwardQuantity}}
+                    </view>
+                  </view>
+                  <view class='weui-flex kind-list__item-hd weui-flex__item'>三等奖
+                    <view class='weui-flex'>
+                      书名：{{item.awards[3].BookName}}
+                    </view>
+                    <view class='weui-flex'>
+                      书本信息：{{item.awards[3].BookInfo}}
+                    </view>
+                    <view class='weui-flex'>
+                      书本照片：<image class="uploader-image" mode="aspectFit" src="{{item.awards[3].BookPhoto}}"></image>
+                    </view>
+                    <view class='weui-flex'>
+                      书本二维码：<image class="uploader-image" mode="aspectFit" src="{{item.awards[3].QRCode}}"></image>
+                    </view>
+                    <view class='weui-flex'>
+                      奖品数量：{{item.awards[3].AwardQuantity}}
+                    </view>
+                  </view>
+              </view>
+            </view>
+          </view>
+          <view>
+            <view>
+              <button class='checkBtn' bindtap="info" data-index="{{index}}">参与</button>
+              <button class='shareBtn' open-type="share" data-index="{{index}}">分享</button>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+</scroll-view>

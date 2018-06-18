@@ -1,0 +1,45 @@
+<scroll-view style="display: flex; flex-direction: row; position: fixed">
+    <view class="page__desc">
+      已获奖
+    </view>
+    <view class='block'>
+      <block wx:for="{{award}}" wx:key="id">
+        <view class="kind-list__item">
+          <view id="{{index}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+            <view class="weui-flex__item">活动名称：{{item.ActivityName}}</view>
+            <view class="weui-flex__item">结束时间：{{item.EndTime}}</view>
+            <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+              <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}"> 
+                  <view class='weui-flex kind-list__item-hd weui-flex__item'>奖品信息
+                    <!--view class='weui-flex'>
+                      奖品种类：{{item.Type}}
+                    </view-->
+                    <view class='weui-flex'>
+                      书名：{{item.AwardName}}
+                    </view>
+                    <view class='weui-flex'>
+                      书本信息：{{item.AwardInfo}}
+                    </view>
+                    <view class='weui-flex'>
+                      书本照片：
+                    </view>
+                    <view class='weui-flex'><image class="uploader-image" mode="aspectFit" src="{{item.BookPhoto}}"></image>
+                    </view>
+                    <view class='weui-flex'>
+                      书本二维码：
+                    </view>
+                    <view class='weui-flex'><image class="uploader-image" mode="aspectFit" src="{{item.QRCode}}"></image>
+                    </view>
+                  </view>
+              </view>
+            </view>
+          </view>
+          <view>
+            <view>
+              <button class='checkBtn' bindtap="fillUserInfo" data-index="{{index}}">填写用户信息</button>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+</scroll-view>

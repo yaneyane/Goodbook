@@ -1,0 +1,27 @@
+{
+  "pages": [
+    
+    "pages/index/index",
+    "pages/createActivity/createActivity",
+    "pages/initiateActivity/initiateActivity",
+
+"pages/userActivityDoing/userActivityDoing",
+    "pages/tologin/tologin",
+
+    "pages/awardSituation/awardSituation",
+    
+    "pages/adminActivityDoing/adminActivityDoing",
+    "pages/adminActivityDone/adminActivityDone",
+    "pages/adminIndex/adminIndex",
+    "pages/adminLogin/adminLogin",
+    "pages/adminActivityList/adminActivityList",
+    "pages/userinfo/userinfo"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "black",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "好书送送送不停",
+    "navigationBarTextStyle": "black"
+  }
+}

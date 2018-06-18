@@ -1,0 +1,24 @@
+<scroll-view style="display: flex; flex-direction: row; position: fixed">
+  <view class='page__desc'>正在进行</view>
+  <view class='block'>
+      <block wx:for="{{doingActivity}}" wx:key="id" wx:for-index="index">
+        <view class="kind-list__item">
+          <view class='content weui-flex kind-list__item-hd kind-list__item-hd_show' style="height: 70px;flex-direction:row;">
+            <view style="width:50px;">
+              <text class='con_num' style="height: 80px;flex-direction:row;" >{{index}}</text>
+            </view>
+            <view class="part weui-flex__item">
+              <text class='con_big'>{{item.ActivityName}}</text>
+              <text class='con_small'>开始：{{item.StartTime}}</text>
+              <text class='con_small'>结束：{{item.EndTime}}</text>
+              <text class='con_small'>参与人数：{{item.number}}</text>
+            </view>
+          </view>
+          <view>
+            <button class='checkBtn' bindtap="finish" data-index="{{index}}">结束活动</button>
+          </view>
+        </view>
+          
+    </block>
+  </view>
+</scroll-view>

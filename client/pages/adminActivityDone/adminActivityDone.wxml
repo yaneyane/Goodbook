@@ -1,0 +1,24 @@
+<scroll-view style="display: flex; flex-direction: row; position: fixed">
+  <view class='page__desc'>已结束</view>
+  <view class='block'>
+    <block wx:for="{{adminActivityDone}}" wx:key="id">
+      <view class="kind-list__item">
+        <view class='content weui-flex kind-list__item-hd kind-list__item-hd_show' style="height: 70px;flex-direction:row;">
+          <view style="width:50px;">
+            <text class='con_num' style="height: 80px;flex-direction:row;">{{index}}</text>
+          </view>
+          <view class="part weui-flex__item">
+            <text class='con_big'>{{item.ActivityName}}</text>
+            <text class='con_small'>开始：{{item.StartTime}}</text>
+            <text class='con_small'>结束：{{item.EndTime}}</text>
+            <text class='con_small'>参与人数：{{item.number}}</text>
+          </view>
+        </view>
+      <view style="width: 100%;flex-direction:row;">
+        <button class='forbidBtn' bindtap="forbid" data-index="{{index}}">禁止用户填写信息</button>
+        <button class='exportBtn' bindtap="exportXlsx" data-index="{{index}}">导出xlsx文件</button>
+      </view>
+    </view>
+    </block>
+  </view>
+</scroll-view>

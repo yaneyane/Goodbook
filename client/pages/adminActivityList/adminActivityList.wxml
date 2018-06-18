@@ -1,0 +1,4 @@
+<view class="button-sp-area;flex-direction:cs" style='flex-direction:row;padding-top:150px'>
+    <image class="loginBtn" src="{{doing_image}}" bindtap="activityDoing"></image> 
+    <image class="loginBtn" src="{{done_image}}" bindtap="activityDone"></image>
+</view>

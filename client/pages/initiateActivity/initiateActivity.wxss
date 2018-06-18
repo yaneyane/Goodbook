@@ -1,0 +1,9 @@
+.list-page{display: flex;position: fixed;width: 100%;height: 100%;flex-direction: column;align-content: center;justify-content: center; margin-top: 10px;}
+.list-title{position: fixed;display: flex;margin: 5px;align-content: center;top: 15px;font-size: 30px;font-weight: bolder;color: #474f30;}
+.list-block{background-color: whitesmoke;margin: 7px;border-radius: 4px;padding-left: 10px;}
+.block-item{margin-top: 15px;margin-bottom: 5px;font-weight: bold;color: #474f30;}
+.block-item2{margin-top: 20px;margin-bottom: 20px;}
+.rules{width: 90%;position: fixed;background-color: #474f30;height: 1px;}
+.btn-area{display: flex;padding: 5px;margin-top: 20px;flex-direction: column;}
+.btn-area button{height: 100%;margin: 5px;background-color: #474f30;color: white;}
+.page{position: fixed;width: 100%;height: 100%;background-size: cover;background-image: url('https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree4.png');}

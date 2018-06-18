@@ -1,0 +1,53 @@
+<view class="page">
+  <form bindsubmit='award' bindreset='awardreset'>
+    <view class="page__desc">
+      填写奖品信息
+    </view>
+    <view class='block'>
+      <block wx:for="{{list}}" wx:key="id">
+        <view class="kind-list__item">
+          <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle">
+            <view class="weui-flex__item">{{item.name}}</view>
+          </view>
+          <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+            <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}"> 
+              <block wx:for="{{item.awardtype}}" wx:for-item="page" wx:key="*this">
+                <view class='listitem-name'>{{page.name}}</view>
+                <view class='listitem-input'>
+                  <input bindinput='{{page.input}}' bindinput='bindPageName' data-index="{{index}}" name='{{page.awardtype.id}}' id='{{page.awardtype.id}}' placeholder='请输入{{page.name}}'></input>
+                </view>
+              </block>
+              <view>
+                <view>
+                  <view class="listitem-name" id='QR'data-index="{{index}}" bindtap="doUpload">
+                      <text>二维码</text>
+                  </view>
+                  <view class="uploader-container" wx:if="{{item.qrcodeUrl}}">
+                      <image class="uploader-image" src="{{item.qrcodeUrl}}"  mode="aspectFit" bindtap="previewImg"></image>
+                  </view>
+                  </view>
+                  <view>
+                </view>
+              </view>
+                <view>
+                <view class="listitem-name" id='Picture' data-index="{{index}}"  bindtap="doUpload2">
+                      <text>图片</text>
+                </view>
+                <view class="uploader-container" wx:if="{{item.bookUrl}}">
+                    <image class="uploader-image" src="{{item.bookUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+                </view>
+                </view>
+                <view>
+              </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    </view>
+    <view class="btn-area">
+      <button class='btn_mid'form-type='submit'>提交 </button>
+      <button class='btn_foot' form-type='reset'>清空 </button>
+    </view>
+  </form>
+   
+</view>
