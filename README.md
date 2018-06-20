@@ -22,50 +22,71 @@
 前端分为12个页面，分别为首页(index)、管理员登录页面（adminLogin），管理员导航界面（adminIndex），管理员设置活动页面（initiateActivity），管理员设置活动奖品页面（createActivity），管理员查看活动导航（adminActivityList），管理员查看正在进行活动页面（adminActivityDoing），管理员查看已结束活动页面（adminAcivityDone），用户参与抽奖页面（userActivityDoing），用户查看情况页面（awardSituation），用户填写信息页面（userinfo），用户授权登录页面（tologin）。
 
 ###以下是我们设计的背景图
+
 ![主界面](https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree1.png)
+
 ####以上背景用于主界面和管理员登录，以及用户查看当前活动信息
+
 ![管理员登录](https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree2.png)
+
 ####以上背景用于管理员创建活动和查看活动的导航
+
 ![管理员登录](https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree3.png)
+
 ####以上背景用于管理员查看活动信息以及用户查看当前已获奖信息
+
 ![填写活动信息](https://github.com/yaneyane/Goodbook/blob/master/images/填写活动信息背景.jpg)
+
 ####以上背景用于管理员创建活动，填写奖品信息，获奖用户填写个人信息
 
 ###界面展示
+
 ####首页（index）
+
 ![首页](https://github.com/yaneyane/Goodbook/blob/master/images/0首页.jpg)
 
 ####管理员登录页面（adminLogin）
+
 ![管理员登录页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.0.0管理员登录界面.jpg)
 
 ####管理员导航页面（adminIndex）
+
 ![管理员导航页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.0.1管理员登录成功之后进入的导航界面.jpg)
 
 ####管理员设置活动页面（initiateActivity）
+
 ![管理员设置活动页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.2.0管理员填写活动信息界面.jpg)
 
 ####管理员设置活动奖品页面（createActivity）
+
 ![管理员设置活动奖品页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.2.2.1管理员填写奖品界面.jpg)
 
 ####管理员查看活动导航（adminActivityList）
+
 ![管理员查看活动导航](https://github.com/yaneyane/Goodbook/blob/master/images/1.1.0管理员查看抽奖活动导航界面.jpg)
 
 ####管理员查看正在进行活动页面（adminActivityDoing）
+
 ![管理员查看正在进行活动页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.1.2.1管理员查看正在进行的活动.jpg)
 
 ####管理员查看已结束活动页面（adminAcivityDone）
+
 ![管理员查看已结束活动页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.1.1.1管理员查看已结束活动界面.jpg)
 
 ####用户参与抽奖页面（userActivityDoing）
+
 ![用户参与抽奖页面](https://github.com/yaneyane/Goodbook/blob/master/images/2.0.1用户查看当前进行的活动.jpg)
 
 ####用户查看情况页面（awardSituation）
+
 ![用户查看情况页面](https://github.com/yaneyane/Goodbook/blob/master/images/2.1.0获奖用户查看已情况界面.jpg)
 
 ####用户填写信息页面（userinfo）
+
 ![用户填写信息页面](https://github.com/yaneyane/Goodbook/blob/master/images/2.1.1.1.0获奖用户填写个人信息界面.jpg)
 
 ####用户授权登录页面（tologin）
+
 ![用户授权登录页面](https://github.com/yaneyane/Goodbook/blob/master/images/授权登录.jpg)
 
 ###前端部分难点
