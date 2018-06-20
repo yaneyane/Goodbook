@@ -28,7 +28,7 @@
 ####以上背景用于管理员创建活动和查看活动的导航
 ![管理员登录](https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree3.png)
 ####以上背景用于管理员查看活动信息以及用户查看当前已获奖信息
-![](/Users/apple/Downloads/填写活动信息背景.jpg)
+![填写活动信息](https://github.com/yaneyane/Goodbook/blob/master/images/填写活动信息背景.jpg)
 ####以上背景用于管理员创建活动，填写奖品信息，获奖用户填写个人信息
 
 ###界面展示
@@ -55,7 +55,7 @@
 ####用户填写信息页面（userinfo）
 ![用户填写信息页面](https://github.com/yaneyane/Goodbook/blob/master/images/2.1.1.1.0获奖用户填写个人信息界面.jpg)
 ####用户授权登录页面（tologin）
-![用户授权登录页面](/Users/apple/Downloads/授权登录.jpg)
+![用户授权登录页面](https://github.com/yaneyane/Goodbook/blob/master/images/授权登录.jpg)
 
 ###前端部分难点
 ####下拉框展示
