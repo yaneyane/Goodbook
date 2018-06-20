@@ -34,26 +34,37 @@
 ###界面展示
 ####首页（index）
 ![首页](https://github.com/yaneyane/Goodbook/blob/master/images/0首页.jpg)
+
 ####管理员登录页面（adminLogin）
 ![管理员登录页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.0.0管理员登录界面.jpg)
+
 ####管理员导航页面（adminIndex）
 ![管理员导航页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.0.1管理员登录成功之后进入的导航界面.jpg)
+
 ####管理员设置活动页面（initiateActivity）
 ![管理员设置活动页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.2.0管理员填写活动信息界面.jpg)
+
 ####管理员设置活动奖品页面（createActivity）
 ![管理员设置活动奖品页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.2.2.1管理员填写奖品界面.jpg)
+
 ####管理员查看活动导航（adminActivityList）
 ![管理员查看活动导航](https://github.com/yaneyane/Goodbook/blob/master/images/1.1.0管理员查看抽奖活动导航界面.jpg)
+
 ####管理员查看正在进行活动页面（adminActivityDoing）
 ![管理员查看正在进行活动页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.1.2.1管理员查看正在进行的活动.jpg)
+
 ####管理员查看已结束活动页面（adminAcivityDone）
 ![管理员查看已结束活动页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.1.1.1管理员查看已结束活动界面.jpg)
+
 ####用户参与抽奖页面（userActivityDoing）
 ![用户参与抽奖页面](https://github.com/yaneyane/Goodbook/blob/master/images/2.0.1用户查看当前进行的活动.jpg)
+
 ####用户查看情况页面（awardSituation）
 ![用户查看情况页面](https://github.com/yaneyane/Goodbook/blob/master/images/2.1.0获奖用户查看已情况界面.jpg)
+
 ####用户填写信息页面（userinfo）
 ![用户填写信息页面](https://github.com/yaneyane/Goodbook/blob/master/images/2.1.1.1.0获奖用户填写个人信息界面.jpg)
+
 ####用户授权登录页面（tologin）
 ![用户授权登录页面](https://github.com/yaneyane/Goodbook/blob/master/images/授权登录.jpg)
 
@@ -129,6 +140,91 @@ wx.request({
 ```
 
 
+## 后端
+####Activity_model.php
+此函数向前端返回正在进行的活动、参加人数以及相应的活动奖品信息
+因缺少函数支持，手工模拟多表连接查询，进行对各种可能出现的情况的判断处理，确保不会返回非法数据破坏软件可行性。
+
+```
+Activity_model.php
+    public function get_activity($ActivityID = NULL) //所有活动
+    {
+        if ($ActivityID == NULL)
+        {
+            $query = $this->db->get_where('Activity', array('status'=>0));
+      $i=0;
+      $res;
+      $res["flag"]=1;
+      if(is_null($query))
+      {
+        $res["flag"]=0;
+      }
+      foreach ($query->result_array() as $row)
+      {
+        $res[$i]=$row;
+         $acidnow=$row['ActivityID'];
+         $resnow=$this->db->get_where('User', array('ActivityID' => $acidnow));
+         $acres=$resnow->result_array();
+         $number=count($acres,0);
+        $res[$i]['number']=$number;
+        $i=$i+1;
+      }
+      return $res;
+        }
+        
+
+        $query = $this->db->get_where('Activity', array('ActivityID' => $ActivityID, 'status'=>0));//正在进行的活动
+        return $query->row_array();
+        
+    }
+```
+
+####Activity_model.php
+因PHP在每次用户点击时，相应类均会创建一个新的对象，这个性质对于需要页面传值的操作非常不友好。在实现管理员填写完活动信息之后填写相应奖品信息时，难点就在于如何把活动ID传给奖品信息页面。最开始考虑的是JS全局变量，但这就完全不支持并发操作。后来我采用了较为取巧的办法：取数据库中Activity表最后一条元组的活动ID，随奖品信息一起插入到Award表中。当然此方法还有待完善之处，现今能想到的比较合理的修改方法是向Activity表中加一个记录时间戳的字段，以时间戳为关键字进行查询并得到ActivityID。
+
+```
+Activity_model.php
+    public function get_acid()
+    {
+        $query = $this->db->get('Activity');
+        $number = $query->num_rows();
+        $query1 = $this->db->get_where('Activity', array('ActivityID' => $number));
+        $data1['activity_item']= $query1->row_array();
+        if(empty($data1['activity_item']))
+        {
+            echo 'no here';
+        }
+        $data1['ActivityName'] = $data1['activity_item']['ActivityName'];
+        $data1['StartTime'] = $data1['activity_item']['StartTime'];
+        $data1['ActivityID'] = $data1['activity_item']['ActivityID'];
+     //   echo $data1['ActivityName'];
+    //    echo $data1['ActivityID'];
+        $this->acid=$data1['ActivityID'];
+        return $this->acid;
+    }
+```
+```
+Award_model.php
+说明：Award_model类中有public成员：acid
+    public function get_acid()
+    {
+        $query = $this->db->get_where('activity', array('ActivityName' => $this->acname));
+        $data1['activity_item'] = $query->row_array();
+        if (empty($data1['activity_item'])) {
+            echo 'no here';
+        }
+       // $data1['ActivityName'] = $data1['activity_item']['ActivityName'];
+       // $data1['StartTime'] = $data1['activity_item']['StartTime'];
+        $data1['ActivityID'] = $data1['activity_item']['ActivityID'];
+        // echo $data1['ActivityName'];
+        //  echo $data1['ActivityID'];
+        $this->acid = $data1['ActivityID'];
+        return $this->acid;
+    }
+```
+可以看到下面的函数虽然实现了将奖品信息插入到数据库中的功能，但参数传递非常繁杂。现今可以想到的优化方案是让前端转而返回四个数组，分别对应特、一、二、三等奖奖品信息，后端php函数传参传递数组即可。这样就同时满足了方便调试与省略过多参数传递的要求。
+
+详情请参考我们的项目代码。
 
 
 
