@@ -1,9 +1,0 @@
-<view class="button-sp-area;flex-direction:cs"style='flex-direction:row-reverse;'>
-  <view class='index_entry'>
-    <image class="loginBtn" src="{{adminEntry_image}}" bindtap="adminEntry"></image> 
-  </view>
-  <view class='index_btn'>
-<image class="loginBtn" src="{{partcipate_image}}" bindtap="participate"></image> 
-<image class="loginBtn" src="{{check_image}}" bindtap="check"></image> 
-  </view>
-</view>
