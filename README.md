@@ -21,76 +21,77 @@
 
 前端分为12个页面，分别为首页(index)、管理员登录页面（adminLogin），管理员导航界面（adminIndex），管理员设置活动页面（initiateActivity），管理员设置活动奖品页面（createActivity），管理员查看活动导航（adminActivityList），管理员查看正在进行活动页面（adminActivityDoing），管理员查看已结束活动页面（adminAcivityDone），用户参与抽奖页面（userActivityDoing），用户查看情况页面（awardSituation），用户填写信息页面（userinfo），用户授权登录页面（tologin）。
 
-###以下是我们设计的背景图
+**以下是我们设计的背景图**
 
 ![主界面](https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree1.png)
 
-####以上背景用于主界面和管理员登录，以及用户查看当前活动信息
+**以上背景用于主界面和管理员登录，以及用户查看当前活动信息**
 
 ![管理员登录](https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree2.png)
 
-####以上背景用于管理员创建活动和查看活动的导航
+**以上背景用于管理员创建活动和查看活动的导航**
 
 ![管理员登录](https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree3.png)
 
-####以上背景用于管理员查看活动信息以及用户查看当前已获奖信息
+**以上背景用于管理员查看活动信息以及用户查看当前已获奖信息**
 
 ![填写活动信息](https://github.com/yaneyane/Goodbook/blob/master/images/填写活动信息背景.jpg)
 
-####以上背景用于管理员创建活动，填写奖品信息，获奖用户填写个人信息
+**以上背景用于管理员创建活动，填写奖品信息，获奖用户填写个人信息**
 
-###界面展示
+##界面展示
 
-####首页（index）
+**首页（index）**
 
 ![首页](https://github.com/yaneyane/Goodbook/blob/master/images/0首页.jpg)
 
-####管理员登录页面（adminLogin）
+**管理员登录页面（adminLogin）**
 
 ![管理员登录页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.0.0管理员登录界面.jpg)
 
-####管理员导航页面（adminIndex）
+**管理员导航页面（adminIndex）**
 
 ![管理员导航页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.0.1管理员登录成功之后进入的导航界面.jpg)
 
-####管理员设置活动页面（initiateActivity）
+**管理员设置活动页面（initiateActivity）**
 
 ![管理员设置活动页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.2.0管理员填写活动信息界面.jpg)
 
-####管理员设置活动奖品页面（createActivity）
+**管理员设置活动奖品页面（createActivity）**
 
 ![管理员设置活动奖品页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.2.2.1管理员填写奖品界面.jpg)
 
-####管理员查看活动导航（adminActivityList）
+**管理员查看活动导航（adminActivityList）**
 
 ![管理员查看活动导航](https://github.com/yaneyane/Goodbook/blob/master/images/1.1.0管理员查看抽奖活动导航界面.jpg)
 
-####管理员查看正在进行活动页面（adminActivityDoing）
+**管理员查看正在进行活动页面（adminActivityDoing）**
 
 ![管理员查看正在进行活动页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.1.2.1管理员查看正在进行的活动.jpg)
 
-####管理员查看已结束活动页面（adminAcivityDone）
+**管理员查看已结束活动页面（adminAcivityDone）**
 
 ![管理员查看已结束活动页面](https://github.com/yaneyane/Goodbook/blob/master/images/1.1.1.1管理员查看已结束活动界面.jpg)
 
-####用户参与抽奖页面（userActivityDoing）
+**用户参与抽奖页面（userActivityDoing）**
 
 ![用户参与抽奖页面](https://github.com/yaneyane/Goodbook/blob/master/images/2.0.1用户查看当前进行的活动.jpg)
 
-####用户查看情况页面（awardSituation）
+**用户查看情况页面（awardSituation）**
 
 ![用户查看情况页面](https://github.com/yaneyane/Goodbook/blob/master/images/2.1.0获奖用户查看已情况界面.jpg)
 
-####用户填写信息页面（userinfo）
+**用户填写信息页面（userinfo）**
 
 ![用户填写信息页面](https://github.com/yaneyane/Goodbook/blob/master/images/2.1.1.1.0获奖用户填写个人信息界面.jpg)
 
-####用户授权登录页面（tologin）
+**用户授权登录页面（tologin）**
 
 ![用户授权登录页面](https://github.com/yaneyane/Goodbook/blob/master/images/授权登录.jpg)
 
-###前端部分难点
-####下拉框展示
+##前端部分难点
+
+**下拉框展示**
 为了提高用户的体验，使用下拉框的形式显示活动信息以及奖品信息，对于管理员创建奖品信息的表单也使用下拉框的设计。界面因此简洁、便捷。
 使用wx:for结构，动态绑定js中从后端传输过来的data，实现对于下拉框中每一部分的动态展示。
 	
@@ -162,7 +163,8 @@ wx.request({
 
 
 ## 后端
-####Activity_model.php
+
+**Activity_model.php**
 此函数向前端返回正在进行的活动、参加人数以及相应的活动奖品信息
 因缺少函数支持，手工模拟多表连接查询，进行对各种可能出现的情况的判断处理，确保不会返回非法数据破坏软件可行性。
 
@@ -200,7 +202,7 @@ Activity_model.php
     }
 ```
 
-####Activity_model.php
+**Activity_model.php**
 因PHP在每次用户点击时，相应类均会创建一个新的对象，这个性质对于需要页面传值的操作非常不友好。在实现管理员填写完活动信息之后填写相应奖品信息时，难点就在于如何把活动ID传给奖品信息页面。最开始考虑的是JS全局变量，但这就完全不支持并发操作。后来我采用了较为取巧的办法：取数据库中Activity表最后一条元组的活动ID，随奖品信息一起插入到Award表中。当然此方法还有待完善之处，现今能想到的比较合理的修改方法是向Activity表中加一个记录时间戳的字段，以时间戳为关键字进行查询并得到ActivityID。
 
 ```
