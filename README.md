@@ -1,212 +1,139 @@
-# Wafer 服务端 SDK - PHP
+# 好书送送送不停
 
-[![Latest Stable Version][packagist-image]][packagist-url]
-[![License][license-image]][license-url]
 
-#### 注意
-Wafer PHP SDK 已经全面升级 2.0 以支持 Wafer2，如果您想查看 Wafer1 的 PHP SDK 文档，请[点击这里](https://github.com/tencentyun/wafer-php-server-sdk/tree/v0.4.4)。
+
 
 ## 介绍
 
-Wafer 服务端 SDK 是腾讯云为微信小程序开发者提供的快速开发库，SDK 封装了以下功能供小程序开发者快速调用：
+"好书送送送不停"小程序是本学期软件工程的大作业，是团队合作开发的一个微信小程序。其主要功能如下：
 
-- 用户登录与验证
-- 信道服务
-- 图片上传
-- 数据库
+- 管理员登录与验证
+- 管理员创建并发布好书抽奖活动
+- 管理员查看当前进行的活动，并可以停止抽奖
+- 管理员查看当前已结束的活动，并导出获奖用户信息
+- 用户查看当前进行的抽奖
+- 用户查看已获奖信息
+- 已获奖用户填写个人信息
 
-开发者只需要根据文档对 SDK 进行初始化配置，就可以获得以上能力。你还可以直接到[腾讯云小程序控制台](https://console.qcloud.com/la)购买小程序解决方案，可以得到运行本示例所需的资源和服务，其中包括已部署好的相关程序、示例代码及自动下发的 SDK 配置文件 `/etc/qcloud/sdk.config`。
+出于创新形式等角度，本项目的前端部分并没有直接使用微信原生的框架WeUI，而是前端团队自行设计出了一套手绘风格的界面。前端使用wxml和js进行开发，后端使用PHP进行开发，服务器端使用腾讯云一键解决方案。
 
-## 安装
+## 前端
 
-- 方法一（推荐）：使用 PHP 包依赖管理工具 `composer` 执行以下命令安装
+前端分为12个页面，分别为首页(index)、管理员登录页面（adminLogin），管理员导航界面（adminIndex），管理员设置活动页面（initiateActivity），管理员设置活动奖品页面（createActivity），管理员查看活动导航（adminActivityList），管理员查看正在进行活动页面（adminActivityDoing），管理员查看已结束活动页面（adminAcivityDone），用户参与抽奖页面（userActivityDoing），用户查看情况页面（awardSituation），用户填写信息页面（userinfo），用户授权登录页面（tologin）。
 
-```sh
-composer require qcloud/weapp-sdk
+###以下是我们设计的背景图
+![主界面](https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree1.png)
+####以上背景用于主界面和管理员登录，以及用户查看当前活动信息
+![管理员登录](https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree2.png)
+####以上背景用于管理员创建活动和查看活动的导航
+![管理员登录](https://wafer-1256477980.cos.ap-guangzhou.myqcloud.com/background/tree3.png)
+####以上背景用于管理员查看活动信息以及用户查看当前已获奖信息
+![](/Users/apple/Downloads/填写活动信息背景.jpg)
+####以上背景用于管理员创建活动，填写奖品信息，获奖用户填写个人信息
+
+###界面展示
+####首页（index）
+![首页](/Users/apple/Desktop/项目截图/0首页.jpg)
+####管理员登录页面（adminLogin）
+![管理员登录页面](/Users/apple/Desktop/项目截图/管理员/1.0.0管理员登录界面.jpg)
+####管理员导航页面（adminIndex）
+![管理员导航页面](/Users/apple/Desktop/项目截图/管理员/1.0.1管理员登录成功之后进入的导航界面.jpg)
+####管理员设置活动页面（initiateActivity）
+![管理员设置活动页面](/Users/apple/Desktop/项目截图/管理员/1.2.0管理员填写活动信息界面.jpg)
+####管理员设置活动奖品页面（createActivity）
+![管理员设置活动奖品页面](/Users/apple/Desktop/项目截图/管理员/1.2.2.1管理员填写奖品界面.jpg)
+####管理员查看活动导航（adminActivityList）
+![管理员查看活动导航](/Users/apple/Desktop/项目截图/管理员/1.1.0管理员查看抽奖活动导航界面.jpg)
+####管理员查看正在进行活动页面（adminActivityDoing）
+![管理员查看正在进行活动页面](/Users/apple/Desktop/项目截图/管理员/1.1.2.1管理员查看正在进行的活动.jpg)
+####管理员查看已结束活动页面（adminAcivityDone）
+![管理员查看已结束活动页面](/Users/apple/Desktop/项目截图/管理员/1.1.1.1管理员查看已结束活动界面.jpg)
+####用户参与抽奖页面（userActivityDoing）
+![用户参与抽奖页面](/Users/apple/Desktop/项目截图/用户/2.0.1用户查看当前进行的活动.jpg)
+####用户查看情况页面（awardSituation）
+![用户查看情况页面](/Users/apple/Desktop/项目截图/用户/2.1.0获奖用户查看已情况界面.jpg)
+####用户填写信息页面（userinfo）
+![用户填写信息页面](/Users/apple/Desktop/项目截图/用户/2.1.1.1.0获奖用户填写个人信息界面.jpg)
+####用户授权登录页面（tologin）
+![用户授权登录页面](/Users/apple/Downloads/授权登录.jpg)
+
+###前端部分难点
+####下拉框展示
+为了提高用户的体验，使用下拉框的形式显示活动信息以及奖品信息，对于管理员创建奖品信息的表单也使用下拉框的设计。界面因此简洁、便捷。
+使用wx:for结构，动态绑定js中从后端传输过来的data，实现对于下拉框中每一部分的动态展示。
+	
+示例代码如下
+
+	js文件中代码
+
+```
+//js中data域，adminActivityDone：管理员查看已结束的活动信息
+data: {
+    adminActivityDone:''
+},
+
+//js动态绑定从后端接收的数据，通过setData()来实现。
+wx.request({
+      url: ‘’,//此处请填写自己服务器相应功能对应的URL
+      method: 'POST',
+      header: { 'content-type': 'application/x-www-form-urlencoded' },
+      success: function (res) {
+        console.log(res.data);
+        if(!res.data.activity || res.data.flag == 1)
+        {
+          wx.showModal({
+            title: '友情提示',
+            content: '当前没有已结束的活动！',
+          })
+        }
+        else 
+        {
+          var tmp = res.data.activity;
+          delete tmp.flag;
+          that.setData({
+            adminActivityDone: tmp
+          });
+        }
+      },
+      fail: function (res) {
+        console.log('submit fail too');
+      },
+      complete: function (res) {
+        console.log('submit complete too');
+      }
+    })
+  }
+```
+	wxml文件中代码
+	
+```
+<block wx:for="{{adminActivityDone}}" wx:key="id">
+      <view class="kind-list__item">
+        <view class='content weui-flex kind-list__item-hd kind-list__item-hd_show' style="height: 70px;flex-direction:row;">
+          <view style="width:50px;">
+            <text class='con_num' style="height: 80px;flex-direction:row;">{{index}}</text>
+          </view>
+          <view class="part weui-flex__item">
+            <text class='con_big'>{{item.ActivityName}}</text>
+            <text class='con_small'>开始：{{item.StartTime}}</text>
+            <text class='con_small'>结束：{{item.EndTime}}</text>
+            <text class='con_small'>参与人数：{{item.number}}</text>
+          </view>
+        </view>
+      <view style="width: 100%;flex-direction:row;">
+        <button class='forbidBtn' bindtap="forbid" data-index="{{index}}">禁止用户填写信息</button>
+        <button class='exportBtn' bindtap="exportXlsx" data-index="{{index}}">导出xlsx文件</button>
+      </view>
+    </view>
+</block>
 ```
 
-- 方法二： 直接下载本仓库 `ZIP` 包解压到项目目录中
 
-## API
 
-参见 [API 文档](./API.md)
 
-## 使用
 
-### 加载 SDK
-
-```php
-// 方法一：使用 composer 加载
-require_once 'path/to/vendor/autoload.php';
-
-// 方法二：不使用 composer 加载
-require_once 'path/to/qcloud/weapp-sdk/AutoLoader.php';
-```
-
-### 初始化 SDK 配置项
-
-```php
-use \QCloud_WeApp_SDK\Conf as Config;
-
-Config::setup(array(
-    'appId'          => '微信小程序 AppID',
-    'appSecret'      => '微信小程序 AppSecret',
-    'useQcloudLogin' => false,
-    'mysql' => [
-        'host' => 'localhost',
-        'port' => 3306,
-        'user' => 'root',
-        'pass' => '',
-        'db'   => 'cAuth',
-        'char' => 'utf8mb4'
-    ],
-    'cos' => [
-        'region'       => 'cn-south',
-        'fileBucket'   => 'test',
-        'uploadFolder' => ''
-    ],
-    'serverHost'         => '1234567.qcloud.la',
-    'tunnelServerUrl'    => '1234567.ws.qcloud.la',
-    'tunnelSignatureKey' => 'abcdefghijkl',
-    'qcloudAppId'        => '121000000',
-    'qcloudSecretId'     => 'ABCDEFG',
-    'qcloudSecretKey'    => 'abcdefghijkl',
-    'wxMessageToken'     => 'abcdefghijkl',
-));
-```
-
-具体配置项说明请查看：[API 文档](/API.md#sdk-配置)。
-
-### 处理用户登录请求
-
-```php
-use \QCloud_WeApp_SDK\Auth\LoginService;
-use \QCloud_WeApp_SDK\Constants;
-
-$result = LoginService::login();
-
-// $result => [
-//   loginState: 1  // 1表示登录成功，0表示登录失败
-//   userinfo: []   // 用户信息
-// ]
-
-if ($result['loginState'] === Constants::S_AUTH) {
-    // 微信用户信息：`$result['userinfo']['userinfo']`
-} else {
-    // 登录失败原因：`$result['error']`
-}
-```
-
-### 检查请求登录态
-
-```php
-use \QCloud_WeApp_SDK\Auth\LoginService;
-use \QCloud_WeApp_SDK\Constants;
-
-$result = LoginService::check();
-
-// $result => [
-//   loginState: 1  // 1表示登录成功，0表示登录失败
-//   userinfo: []   // 用户信息
-// ]
-
-if ($result['loginState'] === Constants::E_AUTH) {
-    // 登录失败原因：`$result['error']`
-    return;
-}
-
-// 使用微信用户信息（`$result['userinfo']['userinfo']`）处理其它业务逻辑
-// ...
-```
-
-### 使用信道服务
-
-业务在一个路由上（如 `/tunnel`）提供信道服务，只需把该路由上的请求都交给 SDK 的信道服务处理即可。
-
-```php
-use \QCloud_WeApp_SDK\Tunnel\TunnelService;
-use \QCloud_WeApp_SDK\Tunnel\ITunnelHandler;
-
-class TunnelHandler implements ITunnelHandler {
-    // TODO: 传入登录的用户信息
-    public function __construct($userinfo) {
-
-    }
-
-    // TODO: 实现 onRequest 方法，处理信道连接请求
-    public function onRequest($tunnelId, $tunnelUrl) {
-
-    }
-
-    // TODO: 实现 onConnect 方法，处理信道连接事件
-    public function onConnect($tunnelId) {
-
-    }
-
-    // TODO: 实现 onMessage 方法，处理信道消息
-    public function onMessage($tunnelId, $type, $content) {
-
-    }
-
-    // TODO: 实现 onClose 方法，处理信道关闭事件
-    public function onClose($tunnelId) {
-
-    }
-}
-
-$handler = new TunnelHandler();
-TunnelService::handle($handler, array('checkLogin' => TRUE));
-```
-
-使用信道服务需要实现处理器，来获取处理信道的各种事件，具体可参考接口 [ITunnelHandler](/API.md#itunnelhandler) 的 API 文档以及配套 Demo 中的 [ChatTunnelHandler](/application/business/ChatTunnelHandler.php) 的实现。
-
-### MySQL 操作类
-
-SDK 在 PDO 的基础上完成了对增删改查等常用操作的封装，并默认会在初始化 SDK 的时候连接数据库，直接通过如下代码可以快速使用 MySQL 操作类：
-
-> **注意：**MySQL 操作类为静态类
-
-```php
-use \QCloud_WeApp_SDK\Mysql\Mysql as DB;
-
-// 查询数据
-$res = DB::row('cSessionInfo', ['*'], ['open_id' => '1234567890']);     // 查询一条
-$res = DB::select('cSessionInfo', ['*'], ['open_id' => '1234567890']);  // 查询多条
-
-// 插入数据
-$res = DB::insert('cSessionInfo', ['open_id' => '1234567890']);
-
-// 更新数据
-$res = DB::update('cSessionInfo', ['open_id' => '1234567890'], ['uuid' => '1']);
-
-// 删除数据
-$res = DB::delete('cSessionInfo', ['open_id' => '1234567890']);
-```
-
-具体配置项说明请查看：[API 文档](/API.md#MySQL)。
-
-### COS 实例
-
-SDK 导出了一个 COS V5 API 实例，可以使用以下代码获取：
-
-```php
-use \QCloud_WeApp_SDK\Cos\CosAPI as Cos;
-
-$cosClient = Cos::getInstance();
-$cosClient->upload('mybucket', 'test.txt', 'Hello World')->toArray();
-```
-
-更多关于 `Cos::getInstance()` 返回 COS 实例的 API，可以查看 [COS PHP SDK V5 文档](https://github.com/tencentyun/cos-php-sdk-v5)
-
-### 详细示例
-
-参见项目：[Wafer2 服务端 DEMO - PHP](https://github.com/tencentyun/wafer2-quickstart-php)
 
 ## LICENSE
 
 [MIT](LICENSE)
 
-[packagist-image]: https://img.shields.io/packagist/v/qcloud/weapp-sdk.svg
-[packagist-url]: https://packagist.org/packages/qcloud/weapp-sdk
-[license-image]: https://img.shields.io/github/license/tencentyun/wafer-php-server-sdk.svg
-[license-url]: LICENSE
